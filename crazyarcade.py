@@ -174,5 +174,5 @@ while is_game_running:
     clock.tick(FPS)  # FPS 조절
 
 # 게임 종료
-pygame.quit()+\
+pygame.quit()
 sys.exit()
