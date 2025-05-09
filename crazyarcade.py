@@ -3,20 +3,24 @@ import pygame
 import sys
 from pygame.locals import *
 
-# 초기화
+#reset
+
 pygame.init()
 
-# 화면 설정
+#screensettings
+
 screen_width = 1920
 screen_height = 1080
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Crazy Arcade by RoDeLa")
 
-# FPS 설정
+#FPS
+
 clock = pygame.time.Clock()
 FPS = 30
 
-# 배경 설정
+#Backgrounds
+
 try:
     background = pygame.image.load("./image/Map.jpg")
     background = pygame.transform.scale(background, (screen_width, screen_height))
@@ -25,7 +29,8 @@ except pygame.error as e:
     pygame.quit()
     sys.exit()
 
-# 캐릭터 설정
+#CharacterSpawn
+
 try:
     character = pygame.image.load("./image/Bezzi.png")
 except pygame.error as e:
@@ -39,11 +44,13 @@ character_height = character_size[1]
 character_x_pos = (screen_width / 2) - (character_width / 2)
 character_y_pos = (screen_height / 2)
 
-# 이동 좌표 초기화
+#좌표계초기화
+
 to_x = 0
 to_y = 0
 
-# 적 정의
+#enemy class 생성
+
 class Enemy:
     def __init__(self):
         try:
@@ -68,7 +75,7 @@ class Enemy:
         self.time = 5
 
     def get_rect(self):
-        # 히트박스를 줄이기 위해 조금 더 작은 사각형을 반환
+        #수정**** 히트박스 줄이기 위해 좀 더 작은 사각형으로 함
         return pygame.Rect(self.x + 10, self.y + 10, self.width - 20, self.height - 20)
 
     def display(self):
@@ -82,7 +89,8 @@ class Enemy:
             self.x += self.speed * self.x_direction
             self.y += self.speed * self.y_direction
 
-            # 경계 처리
+            #경계처리 
+
             if self.x < 0 or self.x > screen_width - self.width:
                 self.x_direction *= -1
             if self.y < 0 or self.y > screen_height - self.height:
