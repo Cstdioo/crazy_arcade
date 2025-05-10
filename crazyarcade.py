@@ -171,7 +171,7 @@ while is_game_running:
     screen.blit(background, (0, 0))  # 배경 그리기
     screen.blit(character, (character_x_pos, character_y_pos))  # 캐릭터 그리기
 
-    # 적 업데이트 및 그리기
+    # 적 업데이트 및 생성
     for enemy in enemies:
         enemy.update()
         # 충돌 감지
